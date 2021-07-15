@@ -1,0 +1,39 @@
+<html lang="en">
+	<head>
+		<meta charset="UTF-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta
+		name="viewport" content="width=device-width, initial-scale=1.0">
+		<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/axentix@1.1.0/dist/css/axentix.min.css">
+		<title>Inscription</title>
+	</head>
+	<body>
+	{% block body %}
+	{{form_start(connexionForm)}}
+			
+		<div style="margin: auto; width: 40%; border:padding: 10px; margin-top:100px;">
+		
+			<div class="card shadow-1 rounded-3 p-5">
+				
+				<div class="card-header txt-center ">Connexion</div>
+				<div class="card-content">
+					<div class="form-field">
+						{{form_row(connexionForm.email,{'label':'Email','attr':{'placeholder': "Taper votre e-mail ...", 'class': "form-control"}})}}
+					</div>
+					<div class="form-field">
+						{{form_row(connexionForm.password,{'label':'Mot de passe','attr':{'placeholder': "Taper votre mot de passe ...", 'class': "form-control"}})}}
+					</div>
+					<br>
+					<div class="divider"></div>
+					<div class="card-footer">
+						<div class="form-field vcenter">
+							{{form_row(connexionForm.connexion,{'attr':{'class': "btn shadow-1 rounded-1 small primary uppercase"}})}}
+						</div>
+					</div>
+					
+				</div>
+			</div>
+			{{form_end(connexionForm)}}
+		{% endblock %}
+	</body>
+</html></div></body></html>

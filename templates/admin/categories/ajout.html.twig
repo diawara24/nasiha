@@ -1,0 +1,14 @@
+{% extends 'layoutAdmin.html.twig' %}
+
+{% block title %}Admin{% endblock %}
+
+{% block body %}
+    <div class="p-5">
+    <h1>Ajouter une catégorie</h1>
+      {{form_start(form_cat)}}
+            {{form_row(form_cat.title,{'label':'Nom','attr':{'placeholder': "Nom catégorie ...", 'class': "form-control"}})}}
+            <br>
+            <button type="submit" class="btn shadow-1 rounded-1 green" >Enregistrer</button>
+        {{form_end(form_cat)}}
+    </div>
+{% endblock %}

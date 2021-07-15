@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>{% block title %}Welcome!{% endblock %}</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/axentix@1.1.0/dist/css/axentix.min.css">
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.10.24/css/jquery.dataTables.min.css">
+  </head>
+
+  <body class="layout with-sidenav">
+    <header>
+      <nav class="navbar shadow-1 primary">
+        <a href="#" target="_blank" class="navbar-brand">Nasiha</a>
+        <div class="navbar-menu ml-auto">
+          <button class="btn shadow-1 circle primary" value=""><span class="fas fa-sign-out-alt"></span></button>
+        </div>
+      </nav>
+    </header>
+
+    <div id="example-sidenav" data-ax="sidenav" class="sidenav shadow-1 large fixed white">
+      {#<div class="sidenav-header">
+          <button data-target="example-sidenav" class="sidenav-trigger"><i class="fas fa-times"></i></button>
+       <img class="sidenav-logo dropshadow-1" src="/img/logo.png" alt="Logo" /> 
+      </div>#}
+      <a href="{{path('admin')}}" class="sidenav-link active">Mon profil</a>
+      <a href="{{path('admin_categorie')}}" class="sidenav-link">Catégorie</a>
+      <a href="{{path('admin_videos')}}" class="sidenav-link">Videos</a>
+      <a href="#" class="sidenav-link">Article</a>
+    
+    </div>
+
+    <main>
+      <!-- Code here the main content -->
+        <button data-target="example-sidenav"
+        class="btn rounded-1 press amaranth dark-1 sidenav-trigger hide-md-up">
+       
+        </button>
+         {# body #}
+        {% block body %}
+
+
+        {% endblock %}
+    </main>
+
+    <footer class="footer primary">
+      Copyright © 2020 - Nasiha Admin
+    </footer>
+     <script src="https://cdn.jsdelivr.net/npm/axentix@1.1.0/dist/js/axentix.min.js"></script>
+     <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+     <script src="https://cdn.datatables.net/1.10.24/js/jquery.dataTables.min.js"></script>
+    {% block javascripts %}
+     
+    {% endblock %}
+  </body>
+</html>

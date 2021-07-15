@@ -1,0 +1,29 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}
+    Nous contacter
+{% endblock %}
+
+{% block body  %}
+    <header class="page-header secondary py-2">
+        <h1>Contacts</h1>
+    </header>
+    <br><br>
+    <section class="container">
+        {% for message in app.flashes('message') %}
+            <div class="alert">
+                <p>{{message}}</p>
+            </div>
+        {% endfor %}
+        <p>Vous souhaitez nous contactez pour obtenir des informations complémentaires ?</p>
+        <h2>Par e-mail en remplissant le formulaire ci-dessous</h2>
+        {# formulaire generer par createFormBuilder #}
+        {{form_start(contactForm)}}
+            {{form_row(contactForm.nom,{'attr':{'placeholder': "votre nom", 'class': "form-control"}})}}
+            {{form_row(contactForm.email,{'attr':{'placeholder': "votre email",'class': "form-control"}})}}
+            {{form_row(contactForm.sujet,{'attr':{'placeholder': "Objet de votre message",'class': "form-control"}})}}
+            {{form_row(contactForm.message,{'attr':{'placeholder': "taper votre message", 'class': "form-control"}})}}
+            {{form_row(contactForm.envoyer,{'attr':{'class': "btnEmvoyer"}})}}
+        {{form_end(contactForm)}}
+    </section>
+{% endblock %}

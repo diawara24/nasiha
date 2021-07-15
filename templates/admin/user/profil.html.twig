@@ -1,0 +1,38 @@
+{% extends 'layoutAdmin.html.twig' %}
+
+{% block title %}Admin
+{% endblock %}
+
+{% block body %}
+	<div class="p-5">
+		<h1>Administrateur</h1>
+		<div class="grix xs2">
+			<div>Administrateur: Mourtalla Faty DIAWARA
+			</div>
+			<div>Email: mourtallafatydiawara@gmail.com
+			</div>
+		</div>
+		<br>
+		<a href="{{path('ajout_admin')}}" class="btn shadow-1 rounded-1 small blue">Ajouter un administrateur</a>
+		<br>
+        <h3>Liste des administrateurs</h3>
+        <div class="responsive-table-2">
+			<table class="table">
+				<thead>
+					<tr>
+						<th>ID</th>
+						<th>NOM</th>
+						<th>EMAIL</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr>
+						<td>1</td>
+						<td>Paul</td>
+						<td>24</td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+	</div>
+{% endblock %}

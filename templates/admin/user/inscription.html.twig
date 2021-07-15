@@ -1,0 +1,23 @@
+{% extends 'layoutAdmin.html.twig' %}
+
+{% block title %}Admin{% endblock %}
+
+{% block body %}
+	<div class="p-5">
+		<h1>Ajouter un administrateur</h1>
+		{{form_start(inscriptionForm)}}
+            <div class="form-field">
+                {{form_row(inscriptionForm.username,{'label':'Nom','attr':{'placeholder': "Votre prénom et nom ...", 'class': "form-control"}})}}
+            </div>
+            <div class="form-field">
+                {{form_row(inscriptionForm.email,{'label':'Email','attr':{'placeholder': "Votre email ...", 'class': "form-control"}})}}
+            </div>
+            <div class="form-field">
+                {{form_row(inscriptionForm.password,{'label':'Mot de passe','attr':{'placeholder': "Votre mot de passe ...", 'class': "form-control"}})}}
+            </div>
+            <div class="form-field">
+                <button type="submit" class="btn shadow-1 rounded-1 small primary uppercase" >Enregistrer</button>
+            </div>
+		{{form_end(inscriptionForm)}}
+	</div>
+{% endblock %}

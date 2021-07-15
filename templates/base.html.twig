@@ -1,0 +1,108 @@
+<html lang="en">
+	<head>
+		<title>
+			{% block title %}Welcome!
+			{% endblock %}
+		</title>
+		<meta charset="UTF-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css">
+		{% block stylesheet %}
+			<link rel="stylesheet" href="{{asset('/css/style.css')}}">
+		{% endblock %}
+	</head>
+	<body>
+		{# navbar #}
+		<div class="container-fluid">
+			<nav>
+				<input type="checkbox" id="check">
+				<label for="check" class="checkbtn">
+					<i class="fas fa-bars"></i>
+				</label>
+				<div class="logo">
+					<p>
+						<a href="{{ path('home')}}">nasiha</a>
+					</p>
+				</div>
+				<ul>
+					<li><a class="active" href="{{ path('home')}}">accueil</a></li>
+					<li><a href="{{ path('articles')}}">articles</a></li>
+					<li><a href="{{ path('videos')}}">vidéo</a></li>
+					<li><a href="{{ path('contacts')}}">contact</a></li>
+				</ul>
+			</nav>
+		</div>
+		{# body #}
+		{% block body %}
+		
+		{% endblock %}
+
+		{# footer #}
+		<footer class="footer-distributed">
+			<div
+				class="footer-left">
+				{# <img src="/img/logo.png"> #}
+				<h3>
+					<span>nasiha</span>
+				</h3>
+				<p class="footer-links">
+					<a href="{{ path('home')}}">Accueil</a>
+					|
+					<a href="{{ path('articles')}}">Articles</a>
+					|
+					<a href="{{ path('videos')}}">Videos</a>
+					|
+					<a href="{{ path('contacts')}}">Contact</a>
+				</p>
+				<p class="footer-company-name">© 2021 nasiha.</p>
+			</div>
+			<div class="footer-center">
+				<div>
+					<i class="fa fa-map-marker"></i>
+					<p>SENEGAL</p>
+				</div>
+				<div>
+					<i class="fa fa-phone"></i>
+					<p>+33 7 58 10 80 72</p>
+				</div>
+				<div>
+					<i class="fa fa-envelope"></i>
+					<p>
+						<a href="mailto:support@eduonix.com">adinounasiha28@gmail.com</a>
+					</p>
+				</div>
+			</div>
+			<div class="footer-right">
+				<p class="footer-company-about">
+					<span>à propos de nasiha</span>
+					An-nasîha, accompagnant Serigne Ahmadou MBACKÉ dans sa mission de partage des  enseignements du Cheikh Ahmadou Bamba Khadimou Rassoul.</p>
+				<div class="footer-icons">
+					<a href="https://www.facebook.com/Nasiha20" target="_blank">
+						<i class="fab fa-facebook-square"></i>
+					</a>
+					<a href="#">
+						<i class="fab fa-twitter" target="_blank"></i>
+					</a>
+					<a href="#">
+						<i class="fab fa-instagram" target="_blank"></i>
+					</a>
+					<a href="#">
+						<i class="fab fa-telegram-plane" target="_blank"></i>
+					</a>
+					<a href="https://www.youtube.com/channel/UCP1qLhrGnUjzyyehjX2kDtA" target="_blank">
+						<i class="fab fa-youtube"></i>
+					</a>
+				</div>
+			</div>
+		</footer>
+		<script src="https://cdn.jsdelivr.net/npm/cookieconsent@3/build/cookieconsent.min.js" data-cfasync="false"></script>
+		<script type="text/javascript" src="{{ asset('/js/prism.js')}}"></script>
+		<script src="{{ asset('/js/lazysizes.min.js')}}" async></script>
+		<script src="{{ asset('/js/fslightbox.min.js')}}"></script>
+		{% block javascript %}
+		
+		
+		{% endblock %}
+	</body>
+</html>

@@ -1,0 +1,29 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Nos videos
+{% endblock %}
+
+{% block body  %}
+    {% for categorie in categories %}
+	<header class="page-header secondary py-2">
+		<h1>vidéos de la catégorie "{{categorie.title}}"</h1>
+	</header>
+	<section class="container py-2">
+		<div class="d-grid gap-1" id="videos-list">
+			{% for video in categorie.videos %}
+				<div>
+					<a data-fslightbox="" href="{{video.lien}}">
+						<img class="card-img-top w-100 border shadow" src="{{video.image}}">
+					</a>
+					<div class="card-body border-top p-1">
+						<h4 class="card-title">{{video.title}}</h4>
+					</div>
+				</div>
+			{% endfor %}
+		</div>
+		<div class="p-2 text-center">
+			<a href="{{path('videos')}}" class="btn btn-secondary">Retour à la liste</a>
+		</div>
+	</section>
+    {% endfor %}
+{% endblock %}

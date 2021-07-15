@@ -1,0 +1,93 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}
+	{{article.title}}
+{% endblock %}
+
+{% block body  %}
+	<header class="page-header secondary py-2">
+		<h1>{{article.title}}</h1>
+	</header>
+	<!-- Content -->
+	<section id="" class="p-1">
+		<main id="article-details" class="d-grid gap-1 pt-1">
+			<section>
+				<div class="articleContent p-1 border shadow">
+					<div class="youtube-embed-wrapper" style="height:0; overflow:hidden; padding-bottom:56.25%; padding-top:30px; position:relative">
+						<img allowfullscreen="" src="{{article.image}}" alt="" style="position:absolute;top:0;left:0;width:100%;height:100%" width="640" height="360" frameborder="0">
+					</div>
+					<br><br>
+					<p>{{article.content | raw}}</p><br>
+					<div id="socialSharing">
+						<h2>Partager</h2>
+						<div class="box">
+							<div class="menu">
+								<a href="javascript:void(0)" onclick="javascript:socialShare('http://www.facebook.com/sharer.php?u={{path('show_articles', {'slug':article.slug})}}')" >
+									<div class="menuItems">
+										<i class="fab fa-whatsapp"></i>
+									</div>
+								</a>
+								<a data-url="{{path('show_articles', {'slug':article.slug})}}">
+									<div class="menuItems">
+										<i class="fab fa-instagram"></i>
+									</div>
+								</a>
+								<a data-url="{{path('show_articles', {'slug':article.slug})}}">
+									<div class="menuItems">
+										<i class="fab fa-facebook"></i>
+									</div>
+								</a>
+								<a data-url="{{path('show_articles', {'slug':article.slug})}}">
+									<div class="menuItems">
+										<i class="fab fa-telegram-plane"></i>
+									</div>
+								</a>
+							</div>
+						</div>
+					</div>
+				</div>
+			</section>
+			<aside>
+
+				{% for articleRecent in articleRecents | slice(0, 1) %}
+					<div class="sidebarblock border shadow mb-1">
+						<h3 class="border-bottom">Article récent
+						</h3>
+						<article class="card border-0">
+							<a href="{{ path('show_articles', {'slug':articleRecent.slug}) }}">
+								<img class="w-100" src="{{articleRecent.image}}" alt="{{articleRecent.title}}">
+							</a>
+							<div class="card-body border-top p-1">
+								<a href="{{ path('show_articles', {'slug':articleRecent.slug}) }}" rel="bookmark">
+									<h4 class="card-title">{{articleRecent.title}}</h4>
+								</a>
+							</div>
+						</article>
+					</div>
+				{% endfor %}
+				{% for videoRecent in videoRecents | slice(0, 1) %}
+					<div class="sidebarblock border shadow mb-1">
+						<h3 class="border-bottom">Video récent</h3>
+						<article class="card border-0">
+							<a href="{{path('toutes_videos')}}">
+								<img class="w-100" src="{{videoRecent.image}}" alt="{{videoRecent.title}}">
+							</a>
+							<div class="card-body border-top p-1">
+								<a href="{{path('toutes_videos')}}" rel="bookmark">
+									<h4 class="card-title">{{videoRecent.title}}</h4>
+								</a>
+							</div>
+						</article>
+					</div>
+				{% endfor %}
+				<div class="sidebarblock border shadow">
+					<h3 class="border-bottom">Barkeelou</h3>
+					<div class="blocktxt text-center">
+						<img class="w-100" src="{{asset('/img/barkelou.jpeg')}}" alt="">
+					</div>
+				</div>
+			</aside>
+		</main>
+	</section>
+	<script type="text/javascript" src="{{ asset('/js/social.js')}}"></script>
+{% endblock %}

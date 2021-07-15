@@ -1,0 +1,43 @@
+{% extends "layoutAdmin.html.twig" %}
+{% block title %}Gérer les catégorie
+{% endblock %}
+{% block body %}
+	<div class="p-5">
+		<h1>Gérer les catégorie</h1>
+		<a href="{{path('ajout_categorie')}}" class="btn shadow-1 rounded-1 blue">Ajouter une catégorie</a>
+		<table id="example1" class="display" style="width:100%">
+			<thead>
+				<tr>
+					<th>ID</th>
+					<th>TITLE</th>
+					<th>ACTION</th>
+				</tr>
+			</thead>
+			<tbody>
+				{% for categorie in categoties %}
+					<tr>
+						<td>{{categorie.id}}</td>
+						<td>{{categorie.title}}</td>
+						<td>
+							<a href="{{path('modifier_categirie',{'id':categorie.id})}}" class="btn shadow-1 rounded-1 small primary uppercase">Mofidier</a>
+						</td>
+					</tr>
+				{% endfor %}
+			</tbody>
+			<tfoot>
+				<tr>
+					<th>ID</th>
+					<th>TITLE</th>
+					<th>ACTION</th>
+				</tr>
+			</tfoot>
+		</table>
+	</div>
+{% endblock %}
+{% block javascripts %}
+    <script>
+        $(document).ready(function () {
+            $('#example1').DataTable();
+        });
+	</script>
+{% endblock %}

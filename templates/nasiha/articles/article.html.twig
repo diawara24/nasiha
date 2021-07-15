@@ -1,0 +1,49 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Nos Articles
+{% endblock %}
+
+{% block body  %}
+	<header class="page-header secondary py-2">
+		<h1>Articles</h1>
+	</header>
+	<section class="container">
+		<section class="d-grid p-2" id="articles-list">
+            {% for article in articles %}
+			<article class="card h-100 shadow pb-2">
+				<a href="{{ path('show_articles', {'slug':article.slug}) }}">
+					<img class="w-100" src="{{article.image}}" alt="{{article.title}}">
+				</a>
+				<div class="card-body p-1">
+					<a href="{{ path('show_articles', {'slug':article.slug}) }}" rel="bookmark">
+						<h2 class="card-title">{{article.title}}</h2>
+					</a>
+					<p class="card-text">{{article.content | u.truncate(100, '...')|raw}}</p>
+				</div>
+				<div class="card-footer">
+					<p class="card-text text-center">
+						<small>{{ article.createdAt | date('d/m/Y')}}</small>
+					</p>
+				</div>
+			</article>
+            {% endfor %}
+		</section>
+		<div class="my-1">
+			<ul class="pagination">
+
+				<li class="page-item {{(page == 1) ? 'disabled' : '' }}">
+					<a class="page-link" rel="next" href="?page={{(page-1)}}">&laquo;&nbsp;Précédent</a>
+				</li>
+				{% for item in 1..((total / limit)|round(0, 'ceil')) %}
+					
+					<li class="page-item {{(page == item) ? 'active' : ''}}">
+						<a class="page-link" href="?page={{item}}">{{item}}</a>
+					</li>
+				{% endfor %}
+				<li class="page-item {{(page == ((total / limit)|round(0, 'ceil'))) ? 'disabled' : '' }}">
+					<a class="page-link" rel="next" href="?page={{(page+1)}}">Suivant&nbsp;&raquo;</a>
+				</li>
+			</ul>
+		</div>
+	</main>
+</section></section>{% endblock %}

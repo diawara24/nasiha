@@ -1,0 +1,43 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Nos videos
+{% endblock %}
+
+{% block body  %}
+	<header class="page-header secondary py-2">
+		<h1>toutes les videos</h1>
+	</header>
+	<section class="container py-2">
+		<div class="d-grid gap-1" id="videos-list">
+			{% for video in videos %}
+				<div>
+					<a data-fslightbox="" href="{{video.lien}}">
+						<img class="card-img-top w-100 border shadow" src="{{video.image}}">
+					</a>
+					<div class="card-body border-top p-1">
+						<h4 class="card-title">{{video.title}}</h4>
+					</div>
+				</div>
+			{% endfor %}
+		</div>
+		<div class="my-1">
+			<ul class="pagination">
+				<li class="page-item {{(page == 1) ? 'disabled' : '' }}">
+					<a class="page-link" rel="prev" href="?page={{(page-1)}}">
+						&laquo;&nbsp;Précédent
+					</a>
+				</li>
+				{% for item in 1..((total / limit)|round(0, 'ceil')) %}
+
+					<li class="page-item {{(page == item) ? 'active' : ''}}">
+						<a class="page-link" href="?page={{item}}">{{item}}</a>
+					</li>
+				{% endfor %}
+				<li class="page-item {{(page == ((total / limit)|round(0, 'ceil'))) ? 'disabled' : '' }}">
+					<a class="page-link" rel="next" href="?page={{(page+1)}}">Suivant&nbsp;&raquo;</a>
+				</li>
+
+			</ul>
+		</div>
+	</section>
+{% endblock %}

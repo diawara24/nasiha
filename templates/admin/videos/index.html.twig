@@ -1,0 +1,95 @@
+{% extends "layoutAdmin.html.twig" %}
+{% block title %}
+	Gérer les videos
+{% endblock %}
+{% block body %}
+	<div class="p-5">
+		<h1>Gérer les videos</h1>
+		<a href="{{path('ajout_video')}}" class="btn shadow-1 rounded-1 blue">Ajouter une video</a>
+		<table id="example" class="display" style="width:100%">
+			<thead>
+				<tr>
+					<th>ID</th>
+					<th>TITLE</th>
+					<th>URL</th>
+					<th>IMAGE</th>
+					<th>CATEGORIE</th>
+					<th>MODIFIER</th>
+					<th>SUPPRIMER</th>
+				</tr>
+			</thead>
+			<tbody>
+				{% for video in videos %}
+					<tr>
+						<td>{{video.id}}</td>
+						<td>{{video.title}}</td>
+						<td>{{video.lien}}</td>
+						<td>{{video.image}}</td>
+
+						<td>{{video.category.title | default('undefined')}}</td>
+
+						<td>
+							<a href="{{path('modifier_video',{'id':video.id})}}" class="btn shadow-1 rounded-1 small primary uppercase">Mofidier</a>
+						</td>
+						<td>
+							<a href="#" class="btn shadow-1 rounded-1 small red uppercase press modal-trigger" data-target="modal-delete" data-id="{{video.id}}" data-titre="{{video.title}} ">
+								supprimer
+							</a>
+						</td>
+					</tr>
+				{% endfor %}
+			</tbody>
+			<tfoot>
+				<tr>
+					<th>ID</th>
+					<th>TITLE</th>
+					<th>URL</th>
+					<th>IMAGE</th>
+					<th>CATEGORIE</th>
+					<th>MODIFIER</th>
+					<th>SUPPRIMER</th>
+				</tr>
+			</tfoot>
+		</table>
+
+	</div>
+	<div class="modal shadow-1 white falling" id="modal-delete" data-ax="modal">
+		<div class="modal-header">Supprimer une video</div>
+
+		<div class="divider"></div>
+
+		<div class="modal-content"></div>
+		<div class="divider"></div>
+		<div class="modal-footer">
+			<div class="float-left">
+				<a href="" class="ml-auto btn shadow-1 rounded-1 small success ">Valider</a>
+			</div>
+			<div class="float-right">
+				<button data-target="modal-delete" class="fx-left ml-auto btn shadow-1 rounded-1 small red modal-trigger">Close</button>
+			</div>
+		</div>
+	</div>
+{% endblock %}
+{% block javascripts %}
+	<script>
+		$(document).ready(function () {
+$('#example').DataTable();
+});
+
+window.onload = () => {
+let modal = new Modal('#modal-delete');
+}
+
+let supprimer = document.querySelectorAll(".modal-trigger")
+for (let bouton of supprimer) {
+bouton.addEventListener("click", function () {
+document.querySelector(".modal-footer div a").href = `/admin/video/supprimer/${
+this.dataset.id
+}`
+document.querySelector(".modal-content").innerText = `êtes-vous sûr de vouloir supprimer la video "${
+this.dataset.titre
+}"`
+})
+}
+	</script>
+{% endblock %}

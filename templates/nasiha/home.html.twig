@@ -1,0 +1,67 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Accueil
+{% endblock %}
+
+{% block body  %}
+	<header class="home-header">
+		<section id="header-text">
+			<h1>Enseignements<br>Videos en ligne</h1>
+			<h2>Organisme indépendant</h2>
+			<a class="btn btn-primary btn-lg" href="{{ path('articles')}}">Articles</a>
+			<a class="btn btn-tertiary btn-lg" href="{{ path('videos')}}">Videos</a>
+		</section>
+		<section id="header-image">
+			<img src="/img/nasiha.png" class="w-100" alt="Background">
+		</section>
+	</header>
+	<section id="videos" class="container-fluid">
+		<section class="container">
+			<header>
+				<h2>Vidéos</h2>
+				<p>Vidéos récentes</p>
+				<p class="my-2">
+					<a class="btn btn-secondary" href="{{path('toutes_videos')}}" target="_self">Voir toutes les videos</a>
+				</p>
+			</header>
+			<section class="pt-1 d-grid gap-1">
+			{% for videoRecent in videoRecents | slice(0, 3) %}
+				<div class="shadow w-100">
+					<a data-fslightbox="" href="{{videoRecent.lien}}">
+						<img class="w-100 border shadow" src="{{videoRecent.image}}" alt="Vidéo Youtube">
+					</a>
+				</div>
+			{% endfor %}
+			</section>
+		</section>
+	</section>
+	<section id="series" class="container-fluid">
+		<section class="container">
+			<header>
+				<h2>articles</h2>
+				<p>Voici les articles récemment publiés</p>
+				<p class="my-2">
+					<a class="btn btn-primary" href="{{path('articles')}}" target="_self">Voir toutes les séries</a>
+				</p>
+			</header>
+			<section class="pt-1 w-70 m-auto">
+			{% for articleRecent in articleRecents | slice(0, 3) %}
+				<article class="card shadow mb-2 d-flex">
+					<div class="f-5">
+						<a href="{{path('show_articles',{'slug':articleRecent.slug})}}">
+							<img class="w-100 lazyloaded" src="{{articleRecent.image}}">
+						</a>
+					</div>
+					<div class="card-body f-7 px-1 pb-1">
+						<a href="{{path('show_articles',{'slug':articleRecent.slug})}}" rel="bookmark">
+							<h3 class="card-title">{{articleRecent.title}}</h3>
+						</a>
+						<p class="card-text">{{articleRecent.content | u.truncate(100, '...')| raw}}</p>
+					</div>
+				</article>
+			{% endfor %}
+			</section>
+		</section>
+	</section>
+
+{% endblock %}

@@ -1,0 +1,26 @@
+{% extends 'layoutAdmin.html.twig' %}
+
+{% block title %}Admin{% endblock %}
+
+{% block body %}
+    <div class="p-5">
+    <h1>Ajouter une catégorie</h1>
+      {{form_start(form_video)}}
+        <div class="form-field">
+            {{form_row(form_video.title,{'label':'Titre','attr':{'placeholder': "Titre de la video ...", 'class': "form-control"}})}}
+        </div>
+        <div class="form-field">
+            {{form_row(form_video.lien,{'label':'URL','attr':{'placeholder': "Lien de la video ...", 'class': "form-control"}})}}
+        </div>
+        <div class="form-field">
+            {{form_row(form_video.image,{'label':'Image','attr':{'placeholder': "Image de la video ...", 'class': "form-control"}})}}
+        </div>
+        <div class="form-field">
+            {{form_row(form_video.category,{'label':'Categorie','attr':{'class': "form-control"}})}}
+        </div>
+        <div class="form-field">
+            <button type="submit" class="btn shadow-1 rounded-1 green" >Enregistrer</button>
+        </div>
+    {{form_end(form_video)}}
+    </div>
+{% endblock %}
